@@ -16,6 +16,7 @@ const paths = require('../../config/paths')
 const os = require('os')
 const immer = require('react-dev-utils/immer').produce
 const globby = require('react-dev-utils/globby').sync
+const packageName = require('../../package.json').name
 
 function writeJson(fileName, object) {
   fs.writeFileSync(
@@ -27,7 +28,9 @@ function writeJson(fileName, object) {
 function verifyNoTypeScript() {
   const typescriptFiles = globby(
     ['**/*.(ts|tsx)', '!**/node_modules', '!**/*.d.ts'],
-    { cwd: paths.appSrc },
+    {
+      cwd: paths.appSrc,
+    },
   )
   if (typescriptFiles.length > 0) {
     console.warn(
@@ -256,7 +259,7 @@ function verifyTypeScriptSetup() {
   if (!fs.existsSync(paths.appTypeDeclarations)) {
     fs.writeFileSync(
       paths.appTypeDeclarations,
-      `/// <reference types="react-scripts" />${os.EOL}`,
+      `/// <reference types="${packageName}" />${os.EOL}`,
     )
   }
 }
