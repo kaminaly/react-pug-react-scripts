@@ -65,18 +65,11 @@ export default (feature) =>
         ).window
       }
 
-      const cleanup = () => {
-        if (window) {
-          window.close()
-          window = null
-        }
-      }
-
       const { document } = window
 
       const cancelToken = setTimeout(() => {
         // Cleanup jsdom instance since we don't need it anymore
-        cleanup()
+        window.close()
 
         reject(`Timed out loading feature: ${feature}`)
       }, 10000)
@@ -92,7 +85,7 @@ export default (feature) =>
           clearTimeout(cancelToken)
 
           // Cleanup jsdom instance since we don't need it anymore
-          cleanup()
+          window.close()
 
           reject(`Error loading feature: ${feature}`)
         },
