@@ -1,7 +1,6 @@
 # react-pug-react-scripts
 
-Created this branch from v3.0.1  
-branch: react-pug-react-scripts  
+Created for create-react-app v3.0.1  
 just add react-pug environment with [babel-plugin-transform-react-pug](https://github.com/pugjs/babel-plugin-transform-react-pug)
 
 ## install `create-react-app` with react-pug-react-scripts
@@ -10,10 +9,18 @@ just add react-pug environment with [babel-plugin-transform-react-pug](https://g
 npx create-react-app app-name --scripts-version react-pug-react-scripts
 ```
 
-for TypeScript (doesn't work)
+for TypeScript
 
 ```
 npx create-react-app app-name --scripts-version react-pug-react-scripts --typescript
+```
+
+note: [TypeScript removes "import" of unused modules.](https://github.com/microsoft/TypeScript/issues/9191)
+variables of inside of pug is NOT detected by the system.
+fixed it by bellow code but it's untidy.
+
+```
+const use = [React, icon]
 ```
 
 ## below is the original README
