@@ -171,6 +171,11 @@ class App extends Component {
           this.setFeature(f.default),
         )
         break
+      case 'nullish-coalescing':
+        import('./features/syntax/NullishCoalescing').then((f) =>
+          this.setFeature(f.default),
+        )
+        break
       case 'object-destructuring':
         import('./features/syntax/ObjectDestructuring').then((f) =>
           this.setFeature(f.default),
@@ -178,6 +183,11 @@ class App extends Component {
         break
       case 'object-spread':
         import('./features/syntax/ObjectSpread').then((f) =>
+          this.setFeature(f.default),
+        )
+        break
+      case 'optional-chaining':
+        import('./features/syntax/OptionalChaining').then((f) =>
           this.setFeature(f.default),
         )
         break
@@ -238,6 +248,11 @@ class App extends Component {
         break
       case 'base-url':
         import('./features/config/BaseUrl').then((f) =>
+          this.setFeature(f.default),
+        )
+        break
+      case 'dynamic-import':
+        import('./features/webpack/DynamicImport').then((f) =>
           this.setFeature(f.default),
         )
         break

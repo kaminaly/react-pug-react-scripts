@@ -16,7 +16,6 @@ const paths = require('../../config/paths')
 const os = require('os')
 const immer = require('react-dev-utils/immer').produce
 const globby = require('react-dev-utils/globby').sync
-const packageName = require('../../package.json').name
 
 function writeJson(fileName, object) {
   fs.writeFileSync(
@@ -28,9 +27,7 @@ function writeJson(fileName, object) {
 function verifyNoTypeScript() {
   const typescriptFiles = globby(
     ['**/*.(ts|tsx)', '!**/node_modules', '!**/*.d.ts'],
-    {
-      cwd: paths.appSrc,
-    },
+    { cwd: paths.appSrc },
   )
   if (typescriptFiles.length > 0) {
     console.warn(
@@ -128,9 +125,8 @@ function verifyTypeScriptSetup() {
     isolatedModules: { value: true, reason: 'implementation limitation' },
     noEmit: { value: true },
     jsx: {
-      parsedValue: ts.JsxEmit.Preserve,
-      value: 'preserve',
-      reason: 'JSX is compiled by Babel',
+      parsedValue: ts.JsxEmit.React,
+      suggested: 'react',
     },
     paths: { value: undefined, reason: 'aliased imports are not supported' },
   }
@@ -260,7 +256,7 @@ function verifyTypeScriptSetup() {
   if (!fs.existsSync(paths.appTypeDeclarations)) {
     fs.writeFileSync(
       paths.appTypeDeclarations,
-      `/// <reference types="${packageName}" />${os.EOL}`,
+      `/// <reference types="react-scripts" />${os.EOL}`,
     )
   }
 }
