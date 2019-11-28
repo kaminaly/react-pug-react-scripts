@@ -1,6 +1,6 @@
 # react-pug-react-scripts
 
-Created for create-react-app v3.0.1  
+Created for create-react-app v3.2.0  
 just add react-pug environment with [babel-plugin-transform-react-pug](https://github.com/pugjs/babel-plugin-transform-react-pug)
 
 ## install `create-react-app` with react-pug-react-scripts
